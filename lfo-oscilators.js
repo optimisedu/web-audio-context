@@ -16,7 +16,7 @@ osc[0].detune.value = 7;
 osc[0].type = "square";
 
 osc[1].frequency.value = 220;
-osc[0].detune.value = -7;
+osc[1].detune.value = -7;
 osc[1].type = "sine";
 
 osc[2].frequency.value = 55;

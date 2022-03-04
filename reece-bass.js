@@ -4,7 +4,7 @@ let AudioContext = window.AudioContext || window.webkitAudioContext;
 
 const audioCtx = new AudioContext({
   latencyHint: "interactive",
-  sampleRate: 44100,
+  sampleRate: 22050,
 });
 
 const osc = [
@@ -27,16 +27,12 @@ osc[2].type = "sine";
 //make distortion curve taken from MDN VoiceChangeOmatic - which was made possible by Kevin Ennis, you can add your own distortion array instead
 // http://stackoverflow.com/questions/22312841/waveshaper-node-in-webaudio-how-to-emulate-distortion
 
-function makeDistortionCurve(amount) {
-  let k = typeof amount === "number" ? amount : 50,
-    n_samples = 44100,
-    curve = new Float32Array(n_samples),
-    deg = Math.PI / 180,
-    i = 0,
-    x;
-  for (; i < n_samples; ++i) {
-    x = (i * 2) / n_samples - 1;
-    curve[i] = ((3 + k) * x * 20 * deg) / (Math.PI + k * Math.abs(x));
+function makeDistortionCurve(amount = 20) {
+  let n_samples = 1028,
+    curve = new Float32Array(n_samples);
+  for (let i = 0; i < n_samples; ++i) {
+    let x = (i * 2) / n_samples - 1;
+    curve[i] = ((Math.PI + amount) * x) / (Math.PI + amount * Math.abs(x));
   }
   return curve;
 }

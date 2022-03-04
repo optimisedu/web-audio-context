@@ -84,3 +84,8 @@ dist.connect(lp);
 lp.connect(gain);
 peak.connect(gain);
 gain.connect(audioCtx.destination);
+
+lfo.start();
+osc[0].start();
+osc[1].start();
+osc[2].start();

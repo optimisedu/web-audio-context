@@ -1,10 +1,10 @@
-# web-audio-context
+# Web-Audio-Context
 
 This pure javascript outlines the very basics of what can be done with the Web audio api, and a (very litt) bit of knowledge of music theory.
 
 The main part of this project is reece.js - It is a very simple synthesiser which can be played straight from your Browser's console - just copy and paste.
 
-#Todo
+# Todo
 
 This project serves mainly as an example of what can be done natively - no HTML or build required to add music to a website. 
 

@@ -27,18 +27,19 @@ osc[2].type = "sine";
 //make distortion curve taken from MDN VoiceChangeOmatic - which was made possible by Kevin Ennis, you can add your own distortion array instead
 // http://stackoverflow.com/questions/22312841/waveshaper-node-in-webaudio-how-to-emulate-distortion
 
-function makeDistortionCurve(amount = 20) {
-  let n_samples = 1028,
-    curve = new Float32Array(n_samples);
-  for (let i = 0; i < n_samples; ++i) {
-    let x = (i * 2) / n_samples - 1;
-    curve[i] = ((Math.PI + amount) * x) / (Math.PI + amount * Math.abs(x));
-  }
-  return curve;
-}
+ function curve(amount) {
+           amount = Math.random() * 87;
+            let n_samples = 1028,
+              curve = new Float32Array(n_samples);
+            for (let i = 0; i < n_samples; ++i) {
+              let x = (i * 2) / n_samples - 1;
+              curve[i] = ((Math.PI + amount) * x) / (Math.PI + amount * Math.abs(x));
+            }
+            return curve
+        }
 
 const dist = new WaveShaperNode(audioCtx);
-dist.curve = makeDistortionCurve(400);
+dist.curve = curve(amount);
 dist.oversample = "4x";
 
 const lfo = new OscillatorNode(audioCtx);

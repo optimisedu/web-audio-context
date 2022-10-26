@@ -14,7 +14,7 @@ const canvas = document.getElementById('imager')
 const canvasCtx = canvas.getContext('2d')
 
 
-function getInput(){
+getInput = () =>{
     return navigator.mediaDevices.getUserMedia({
     audio: true,
     video: false,

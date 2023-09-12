@@ -24,8 +24,6 @@ osc[1].type = "sawtooth";
 osc[2].frequency.value = 43.65;
 osc[2].type = "sine";
 
-//make distortion curve taken from MDN VoiceChangeOmatic - which was made possible by Kevin Ennis, you can add your own distortion array instead
-// http://stackoverflow.com/questions/22312841/waveshaper-node-in-webaudio-how-to-emulate-distortion
 
 function makeDistortionCurve(amount = 20) {
   let n_samples = 1028,

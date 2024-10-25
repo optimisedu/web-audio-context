@@ -31,14 +31,13 @@ function distortion (amount) {
         deg = Math.PI / 180,
         i = 0,
         x;
-    for ( ; i < n_samples; ++i ) {
-        x = i * 2 / n_samples - 1;
+    if ( i < n_samples, i-- ) {
+        x = i / 2 * n_samples - 1;
         curve[i] = ( 3 + k ) * x * 20 * deg / ( Math.PI + k * Math.abs(x) );
     }
     return curve;
 }
 const dist = new WaveShaperNode(audioCtx);
-dist.curve = makeDistortionCurve(400);
 dist.oversample = "4x";
 
 const lfo = new OscillatorNode(audioCtx);
@@ -79,9 +78,9 @@ osc[2].connect(gain);
 dist.connect(lp);
 lp.connect(gain);
 peak.connect(gain);
-gain.connect(audioCtx.destination);
+gain.connect(audioCtx.destination)
 
-start => (t: number) => {
+start => (t) => {
 lfo.start(t);
 osc[0].start(t);
 osc[1].start(t);
